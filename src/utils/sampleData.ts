@@ -1,0 +1,781 @@
+import { StudyExplanation, MindMapData, FormulaCheatSheetData, MaterialAnalysisResult } from '../types';
+
+export const SAMPLE_STUDY_TOPICS = [
+  { topic: 'Photosynthesis', category: 'Biology', difficulty: 'Beginner' as const },
+  { topic: 'Quantum Superposition', category: 'Physics', difficulty: 'Intermediate' as const },
+  { topic: 'Supply and Demand Dynamics', category: 'Economics', difficulty: 'Beginner' as const },
+  { topic: 'Neural Network Backpropagation', category: 'Computer Science', difficulty: 'Advanced' as const },
+  { topic: 'Plate Tectonics & Earthquakes', category: 'Earth Science', difficulty: 'Beginner' as const },
+  { topic: 'How Blockchain Consensus Works', category: 'Tech', difficulty: 'Intermediate' as const },
+];
+
+export const SAMPLE_FORMULA_TOPICS = [
+  { topic: 'Physics: Kinematics & Newton’s Laws', category: 'Physics' },
+  { topic: 'Calculus: Derivatives, Integrals & Series', category: 'Mathematics' },
+  { topic: 'Chemistry: Thermodynamics & Gas Laws', category: 'Chemistry' },
+  { topic: 'Electrical Engineering: Circuits & AC Power', category: 'Engineering' },
+  { topic: 'Economics: Microeconomic Elasticity & Costs', category: 'Economics' },
+  { topic: 'Statistics: Probability, Normal Distribution & Z-Score', category: 'Statistics' },
+  { topic: 'Computer Science: Algorithmic Complexity & Big-O', category: 'Computer Science' },
+  { topic: 'Biochemistry: Enzyme Kinetics & Michaelis-Menten', category: 'Biology' },
+];
+
+export const SAMPLE_MINDMAP_TOPICS = [
+  'Artificial Intelligence & Machine Learning',
+  'Photosynthesis & Plant Biology',
+  'Quantum Computing Fundamentals',
+  'Human Brain & Nervous System',
+  'French Revolution & European History',
+  'Macroeconomics & Monetary Policy',
+  'Data Structures & Algorithms',
+  'Renewable Energy & Climate Science',
+  'Ancient Egyptian Civilization',
+  'DNA Replication & Genetics',
+];
+
+export const PREVIEW_EXPLANATION: StudyExplanation = {
+  topic: 'Photosynthesis',
+  difficulty: 'Beginner',
+  simpleExplanation:
+    'Photosynthesis is the wondrous biological process plants, algae, and some bacteria use to convert sunlight, water, and carbon dioxide into oxygen and chemical energy in the form of sugar (glucose). Inside tiny cellular kitchens called chloroplasts, a green pigment named chlorophyll absorbs light energy to fuel this life-sustaining reaction.',
+  easyAnalogy:
+    'Think of a plant leaf as a solar-powered gourmet bakery. The chlorophyll acts as solar panels on the roof, carbon dioxide from the air and water from the soil are the raw ingredients, sunlight is the electricity running the oven, and fresh glucose cookies come out to feed the plant while releasing fresh oxygen as sweet bakery aroma.',
+  keyPoints: [
+    'Chloroplasts containing chlorophyll pigment absorb sunlight (primarily red and blue wavelengths).',
+    'Raw inputs: Carbon Dioxide (CO₂) + Water (H₂O) + Sunlight energy.',
+    'End products: Glucose (C₆H₁₂O₆) for cellular fuel + Oxygen (O₂) released into the atmosphere.',
+    'Consists of two primary stages: Light-Dependent Reactions (in thylakoids) and the Calvin Cycle (in stroma).',
+    'Forms the foundation of virtually all terrestrial food webs and atmospheric oxygen on Earth.',
+  ],
+  example:
+    'Imagine a sunflower growing in a backyard. Its roots draw water from the soil, its leaves pull in carbon dioxide through microscopic pores called stomata, and its chlorophyll captures morning sunlight. By afternoon, the sunflower has synthesized glucose to build stronger stems and bright yellow petals, while giving off pure oxygen for neighborhood wildlife to breathe.',
+  practiceQuestion: {
+    id: 'q-1',
+    type: 'mcq',
+    difficulty: 'Easy',
+    conceptTag: 'Core Inputs',
+    question: 'Which of the following is an essential INPUT required for photosynthesis to occur?',
+    options: [
+      'Pure Glucose and Oxygen',
+      'Carbon Dioxide and Water',
+      'Nitrogen Gas only',
+      'Ozone and Methane',
+    ],
+    correctOptionIndex: 1,
+    hint: 'Think about what the plant drinks from the soil and absorbs from the surrounding air.',
+    explanation:
+      'Photosynthesis requires Carbon Dioxide (CO₂) absorbed from the atmosphere and Water (H₂O) absorbed by roots, energized by sunlight, to produce glucose and oxygen.',
+  },
+  practiceQuestions: [
+    {
+      id: 'q-1',
+      type: 'mcq',
+      difficulty: 'Easy',
+      conceptTag: 'Core Inputs',
+      question: 'Which of the following are the primary reactants (inputs) required for photosynthesis to occur?',
+      options: ['Glucose and Oxygen', 'Carbon Dioxide, Water, and Sunlight', 'Nitrogen Gas and Methane', 'Carbon Monoxide and Hydrogen'],
+      correctOptionIndex: 1,
+      hint: 'Think about what a plant drinks through its roots and absorbs from the air.',
+      explanation: 'Photosynthesis uses light energy to convert carbon dioxide (CO₂) and water (H₂O) into glucose and oxygen.',
+    },
+    {
+      id: 'q-2',
+      type: 'true_false',
+      difficulty: 'Easy',
+      conceptTag: 'Organelles',
+      question: 'True or False: Chloroplasts are the cellular organelles where photosynthesis takes place in plant cells.',
+      options: ['True', 'False'],
+      correctOptionIndex: 0,
+      hint: 'Recall the specialized green organelle containing chlorophyll.',
+      explanation: 'True. Chloroplasts contain chlorophyll pigments and the enzymatic machinery for both light reactions and the Calvin cycle.',
+    },
+    {
+      id: 'q-3',
+      type: 'mcq',
+      difficulty: 'Easy',
+      conceptTag: 'Pigments',
+      question: 'What green pigment is primarily responsible for absorbing sunlight to power photosynthesis?',
+      options: ['Hemoglobin', 'Melanin', 'Chlorophyll', 'Carotene'],
+      correctOptionIndex: 2,
+      hint: 'It gives plants and leaves their characteristic green color.',
+      explanation: 'Chlorophyll (predominantly Chlorophyll a and b) captures photons in the blue and red regions of the visible spectrum.',
+    },
+    {
+      id: 'q-4',
+      type: 'short_answer',
+      difficulty: 'Easy',
+      conceptTag: 'Byproducts',
+      question: 'What vital atmospheric gas is produced as a byproduct during the light-dependent reactions of photosynthesis?',
+      options: ['Oxygen (O₂)', 'Nitrogen (N₂)', 'Helium (He)', 'Carbon Dioxide (CO₂)'],
+      correctOptionIndex: 0,
+      hint: 'It is the gas animals and humans require for cellular respiration.',
+      explanation: 'When water molecules (H₂O) are split (photolysis) during the light reactions, oxygen gas is released as a byproduct.',
+    },
+    {
+      id: 'q-5',
+      type: 'true_false',
+      difficulty: 'Easy',
+      conceptTag: 'Energy Storage',
+      question: 'True or False: Plants perform photosynthesis to produce glucose, which stores chemical energy for plant growth and metabolism.',
+      options: ['True', 'False'],
+      correctOptionIndex: 0,
+      hint: 'Glucose is a primary sugar and carbohydrate building block.',
+      explanation: 'True. Glucose (C₆H₁₂O₆) serves as cellular fuel, starch reserves, and structural cellulose for plant cell walls.',
+    },
+    {
+      id: 'q-6',
+      type: 'mcq',
+      difficulty: 'Medium',
+      conceptTag: 'Gas Exchange',
+      question: 'Through which microscopic structures on plant leaves does carbon dioxide enter and oxygen exit?',
+      options: ['Xylem vessels', 'Stomata (guarded by guard cells)', 'Thylakoid pores', 'Phloem tubes'],
+      correctOptionIndex: 1,
+      hint: 'These adjustable surface pores open and close depending on hydration and light.',
+      explanation: 'Stomata are specialized leaf pores flanked by guard cells that regulate transpirational water loss and gas exchange.',
+    },
+    {
+      id: 'q-7',
+      type: 'conceptual',
+      difficulty: 'Medium',
+      conceptTag: 'Light Spectrum',
+      question: 'Why do most plant leaves appear green to the human eye?',
+      options: [
+        'Chlorophyll absorbs green light and reflects red and blue wavelengths.',
+        'Chlorophyll absorbs red and blue light while transmitting and reflecting green wavelengths.',
+        'Green light is the most energetic wavelength utilized by the Calvin cycle.',
+        'Leaf cuticle wax produces green bioluminescence in daylight.',
+      ],
+      correctOptionIndex: 1,
+      hint: 'We see the wavelengths that are bounced back to our eyes, not absorbed.',
+      explanation: 'Chlorophyll molecules absorb photons in the blue (~430nm) and red (~660nm) spectrums, reflecting green wavelengths back to our eyes.',
+    },
+    {
+      id: 'q-8',
+      type: 'conceptual',
+      difficulty: 'Medium',
+      conceptTag: 'Calvin Cycle',
+      question: 'Where within the chloroplast does the light-independent stage (Calvin Cycle / Dark Reactions) take place?',
+      options: ['Thylakoid lumen', 'Stroma (the fluid-filled interior)', 'Outer mitochondrial membrane', 'Nuclear envelope'],
+      correctOptionIndex: 1,
+      hint: 'It occurs in the surrounding fluid matrix where enzymes like RuBisCO reside.',
+      explanation: 'The Calvin cycle takes place in the chloroplast stroma, utilizing ATP and NADPH generated by the thylakoid light reactions.',
+    },
+    {
+      id: 'q-9',
+      type: 'true_false',
+      difficulty: 'Medium',
+      conceptTag: 'Dark Reactions',
+      question: 'True or False: The Calvin Cycle cannot synthesize carbohydrates if ATP and NADPH from the light reactions are absent.',
+      options: ['True', 'False'],
+      correctOptionIndex: 0,
+      hint: 'Think about where the energy to fix carbon into sugar comes from.',
+      explanation: 'True. While the Calvin cycle does not directly require light photons, it is completely reliant on ATP and NADPH chemical energy.',
+    },
+    {
+      id: 'q-10',
+      type: 'mcq',
+      difficulty: 'Medium',
+      conceptTag: 'Photolysis',
+      question: 'During photolysis in Photosystem II, water is split into which three components?',
+      options: [
+        'Protons (H⁺), electrons (e⁻), and oxygen gas (O₂)',
+        'Glucose, carbon monoxide, and ozone',
+        'Hydrogen gas (H₂), nitrogen, and ATP',
+        'Carbon atoms, water vapor, and methane',
+      ],
+      correctOptionIndex: 0,
+      hint: 'Electrons replace those excited in chlorophyll, protons build a gradient, and oxygen is released.',
+      explanation: '2H₂O → 4H⁺ + 4e⁻ + O₂. The electrons resupply Photosystem II reaction centers, H⁺ drives ATP synthase, and O₂ is released.',
+    },
+    {
+      id: 'q-11',
+      type: 'application',
+      difficulty: 'Medium',
+      conceptTag: 'Environmental Factors',
+      question: 'A greenhouse grower boosts CO₂ levels and temperature inside a sunny greenhouse. What happens to the rate of photosynthesis?',
+      options: [
+        'It drops immediately to zero because excess carbon suffocates leaves.',
+        'It increases until another factor, such as light intensity or water, becomes the limiting factor.',
+        'It remains unchanged because photosynthesis operates at a strictly fixed velocity.',
+        'The plant converts entirely to anaerobic fermentation.',
+      ],
+      correctOptionIndex: 1,
+      hint: 'Consider the Law of Limiting Factors in biological systems.',
+      explanation: 'Elevating carbon dioxide and temperature accelerates enzymatic fixation until light, water, or enzyme saturation limits the rate.',
+    },
+    {
+      id: 'q-12',
+      type: 'application',
+      difficulty: 'Hard',
+      conceptTag: 'Drought Adaptation',
+      question: 'During severe drought conditions, plants close their stomata to conserve water. What is the immediate physiological consequence for photosynthesis?',
+      options: [
+        'Photosynthesis speeds up because water loss is halted.',
+        'Internal CO₂ levels plummet, which diminishes Calvin cycle activity and risks photorespiration.',
+        'Light reactions stop producing ATP instantly.',
+        'The plant begins extracting nitrogen directly from chlorophyll.',
+      ],
+      correctOptionIndex: 1,
+      hint: 'Closing the leaf pores blocks fresh carbon dioxide from entering.',
+      explanation: 'Closed stomata trap oxygen inside and prevent new CO₂ intake. Low CO₂ slows sugar synthesis and triggers photorespiration.',
+    },
+    {
+      id: 'q-13',
+      type: 'conceptual',
+      difficulty: 'Hard',
+      conceptTag: 'Enzyme Kinetics',
+      question: 'Which crucial enzyme catalyzes the initial carbon fixation step of the Calvin Cycle by combining CO₂ with RuBP?',
+      options: ['DNA Polymerase', 'RuBisCO (Ribulose-1,5-bisphosphate carboxylase-oxygenase)', 'ATP Synthase', 'Amylase'],
+      correctOptionIndex: 1,
+      hint: 'It is considered one of the most abundant proteins on Earth.',
+      explanation: 'RuBisCO fixes atmospheric CO₂ onto a 5-carbon ribulose-1,5-bisphosphate (RuBP) molecule in the stroma.',
+    },
+    {
+      id: 'q-14',
+      type: 'application',
+      difficulty: 'Hard',
+      conceptTag: 'Energetics & Balance',
+      question: 'How many turns of the Calvin Cycle (fixing 1 CO₂ per turn) are required to produce one net molecule of glucose (C₆H₁₂O₆)?',
+      options: ['1 turn', '2 turns', '6 turns', '12 turns'],
+      correctOptionIndex: 2,
+      hint: 'Glucose contains 6 carbon atoms.',
+      explanation: 'Each turn fixes one CO₂ atom. Six turns fix 6 carbons, yielding 2 G3P molecules that combine to form one 6-carbon glucose.',
+    },
+    {
+      id: 'q-15',
+      type: 'application',
+      difficulty: 'Hard',
+      conceptTag: 'Experimental Science',
+      question: 'If a plant is illuminated exclusively with pure green LED light (~520nm), what is the most likely outcome on its photosynthetic output?',
+      options: [
+        'Photosynthetic rate will drop drastically because chlorophyll absorbs very little green light.',
+        'Photosynthetic rate will double because green light matches chlorophyll\'s resonance peak.',
+        'The plant will instantly produce sucrose instead of glucose.',
+        'The plant will consume oxygen at tenfold speed.',
+      ],
+      correctOptionIndex: 0,
+      hint: 'Recall chlorophyll absorption spectrum peaks (blue and red).',
+      explanation: 'Because chlorophyll predominantly reflects rather than absorbs green photons, photosynthetic carbon fixation will be extremely low.',
+    },
+    {
+      id: 'q-16',
+      type: 'conceptual',
+      difficulty: 'Hard',
+      conceptTag: 'Chemiosmosis',
+      question: 'How is ATP generated during the light-dependent reactions across the thylakoid membrane?',
+      options: [
+        'Through an electrochemical proton gradient (H⁺ accumulation in the lumen) driving ATP Synthase via chemiosmosis.',
+        'By direct thermal breakdown of water in the stroma.',
+        'Through nuclear fission inside chloroplast ribosomes.',
+        'By passive diffusion of glucose through outer membranes.',
+      ],
+      correctOptionIndex: 0,
+      hint: 'Protons pumped into the thylakoid lumen flow back out through a molecular turbine.',
+      explanation: 'Protons accumulated from photolysis and the electron transport chain flow down their gradient through ATP Synthase, synthesizing ATP.',
+    },
+  ],
+  generatedAt: new Date().toISOString(),
+};
+
+export const PREVIEW_MINDMAP: MindMapData = {
+  topic: 'Artificial Intelligence',
+  centralConcept: 'Artificial Intelligence',
+  coreSummary:
+    'The science and engineering of creating intelligent machines capable of performing tasks that typically require human cognition, learning, and decision-making.',
+  branches: [
+    {
+      id: 'branch-1',
+      title: 'Machine Learning (ML)',
+      summary: 'Algorithms that learn patterns from data rather than explicit rule programming.',
+      color: 'indigo',
+      subtopics: [
+        {
+          id: 'sub-1-1',
+          title: 'Supervised Learning',
+          description: 'Training models on labeled datasets with known ground truth outcomes.',
+          keyDetail: 'Regression & Classification',
+        },
+        {
+          id: 'sub-1-2',
+          title: 'Unsupervised Learning',
+          description: 'Discovering hidden groupings or patterns in unlabeled data.',
+          keyDetail: 'Clustering & Dimensionality Reduction',
+        },
+        {
+          id: 'sub-1-3',
+          title: 'Reinforcement Learning',
+          description: 'Agents learning optimal policies via reward and penalty trial-and-error.',
+          keyDetail: 'Q-Learning & Policy Gradients',
+        },
+      ],
+    },
+    {
+      id: 'branch-2',
+      title: 'Deep Learning & Neural Networks',
+      summary: 'Multi-layered neural architectures mimicking biological neural pathways for complex tasks.',
+      color: 'emerald',
+      subtopics: [
+        {
+          id: 'sub-2-1',
+          title: 'Convolutional Neural Networks (CNN)',
+          description: 'Grid-processing architectures optimized for spatial image and video analysis.',
+          keyDetail: 'Computer Vision & Object Detection',
+        },
+        {
+          id: 'sub-2-2',
+          title: 'Transformer Architecture',
+          description: 'Self-attention mechanisms powering modern LLMs and multimodal foundation models.',
+          keyDetail: 'Attention Is All You Need',
+        },
+        {
+          id: 'sub-2-3',
+          title: 'Recurrent Networks (RNN & LSTM)',
+          description: 'Sequential memory processing for time-series and audio streams.',
+          keyDetail: 'Temporal Data Modeling',
+        },
+      ],
+    },
+    {
+      id: 'branch-3',
+      title: 'Natural Language Processing (NLP)',
+      summary: 'Enabling computational systems to understand, generate, and manipulate human language.',
+      color: 'amber',
+      subtopics: [
+        {
+          id: 'sub-3-1',
+          title: 'Large Language Models (LLMs)',
+          description: 'Massive transformer-based foundation models trained on global textual corpuses.',
+          keyDetail: 'Context Windows & Reasoning',
+        },
+        {
+          id: 'sub-3-2',
+          title: 'Sentiment & Intent Analysis',
+          description: 'Extracting emotional polarity and user goals from unstructured text.',
+          keyDetail: 'Customer Intelligence',
+        },
+        {
+          id: 'sub-3-3',
+          title: 'Machine Translation',
+          description: 'Cross-lingual semantic mapping between human languages in real-time.',
+          keyDetail: 'Multilingual Embeddings',
+        },
+      ],
+    },
+    {
+      id: 'branch-4',
+      title: 'Computer Vision',
+      summary: 'Extracting meaningful insight and semantic understanding from digital imagery.',
+      color: 'rose',
+      subtopics: [
+        {
+          id: 'sub-4-1',
+          title: 'Image Segmentation',
+          description: 'Partitioning images into pixel-level semantic regions and bounding masks.',
+          keyDetail: 'Medical Imaging Diagnostics',
+        },
+        {
+          id: 'sub-4-2',
+          title: 'Facial Recognition & Tracking',
+          description: 'Biometric verification and kinematic pose estimation in video feeds.',
+          keyDetail: 'Spatial Computing & Security',
+        },
+        {
+          id: 'sub-4-3',
+          title: 'Autonomous Navigation',
+          description: 'Real-time sensor fusion combining LIDAR, radar, and visual streams for self-driving.',
+          keyDetail: 'Perception & Path Planning',
+        },
+      ],
+    },
+    {
+      id: 'branch-5',
+      title: 'AI Ethics & Alignment',
+      summary: 'Ensuring AI systems are safe, unbiased, transparent, and aligned with human values.',
+      color: 'violet',
+      subtopics: [
+        {
+          id: 'sub-5-1',
+          title: 'Bias & Algorithmic Fairness',
+          description: 'Detecting and mitigating historical training data disparities across demographics.',
+          keyDetail: 'Fairness Metrics & Auditing',
+        },
+        {
+          id: 'sub-5-2',
+          title: 'Explainability & XAI',
+          description: 'Techniques making black-box model decisions interpretable to human operators.',
+          keyDetail: 'SHAP & LIME Interpretability',
+        },
+        {
+          id: 'sub-5-3',
+          title: 'Safety & Guardrails',
+          description: 'Reinforcement learning from human feedback (RLHF) and output safety filters.',
+          keyDetail: 'Alignment & Red Teaming',
+        },
+      ],
+    },
+  ],
+  generatedAt: new Date().toISOString(),
+};
+
+export const PREVIEW_FORMULA_CHEATSHEET: FormulaCheatSheetData = {
+  topic: "Kinematics & Newton's Laws of Motion",
+  subjectCategory: 'Physics',
+  overview:
+    'Core governing equations describing the motion of objects in one and two dimensions under constant acceleration, as well as Newton’s fundamental laws of classical mechanics relating forces, masses, momentum, and friction.',
+  categories: [
+    {
+      categoryName: 'Kinematic Equations (1D & 2D Constant Acceleration)',
+      description: 'The Big 4 kinematic relationships connecting displacement, velocity, acceleration, and elapsed time.',
+      formulas: [
+        {
+          id: 'formula-1-1',
+          name: 'Velocity-Time Equation',
+          latex: 'v = v_0 + a t',
+          plainText: 'v = v0 + a * t',
+          description: 'Calculates the final instantaneous velocity of an object accelerating at a constant rate over time t.',
+          variables: [
+            { symbol: 'v', meaning: 'Final Velocity', unit: 'm/s' },
+            { symbol: 'v_0', meaning: 'Initial Velocity', unit: 'm/s' },
+            { symbol: 'a', meaning: 'Constant Acceleration', unit: 'm/s²' },
+            { symbol: 't', meaning: 'Time Elapsed', unit: 's (seconds)' },
+          ],
+          whenToUse: 'Use when displacement (Δx) is not given and not required, but initial/final velocity, acceleration, or time is known.',
+          workedExample: {
+            problem: 'A sports car accelerates from rest at 4.5 m/s² for 6.0 seconds. Find its final velocity.',
+            given: 'v_0 = 0 m/s, a = 4.5 m/s², t = 6.0 s',
+            solutionSteps: [
+              'Select equation: v = v_0 + a*t',
+              'Substitute known values: v = 0 + (4.5 m/s²)(6.0 s)',
+              'Calculate: v = 27.0 m/s',
+            ],
+            finalAnswer: 'v = 27.0 m/s (approx 97.2 km/h)',
+          },
+          commonPitfalls: 'Forgetting that acceleration can be negative (deceleration/braking) or that freefall has a = -9.8 m/s².',
+        },
+        {
+          id: 'formula-1-2',
+          name: 'Displacement-Time Equation (Position)',
+          latex: '\\Delta x = v_0 t + \\frac{1}{2} a t^2',
+          plainText: 'Δx = v0 * t + 0.5 * a * t^2',
+          description: 'Determines the total linear displacement when an object undergoes constant acceleration.',
+          variables: [
+            { symbol: 'Δx', meaning: 'Displacement / Distance', unit: 'm (meters)' },
+            { symbol: 'v_0', meaning: 'Initial Velocity', unit: 'm/s' },
+            { symbol: 't', meaning: 'Time Elapsed', unit: 's' },
+            { symbol: 'a', meaning: 'Constant Acceleration', unit: 'm/s²' },
+          ],
+          whenToUse: 'Use when final velocity (v) is neither known nor requested.',
+          workedExample: {
+            problem: 'A ball is dropped from a cliff (v_0 = 0) and hits the ground after 3.2 seconds. How tall is the cliff?',
+            given: 'v_0 = 0 m/s, t = 3.2 s, a = 9.8 m/s²',
+            solutionSteps: [
+              'Δy = v_0*t + 0.5*g*t²',
+              'Δy = 0*(3.2) + 0.5*(9.8)*(3.2)²',
+              'Δy = 0.5 * 9.8 * 10.24 = 50.18 m',
+            ],
+            finalAnswer: 'Height = 50.2 meters',
+          },
+          commonPitfalls: 'Squaring the entire term (0.5*a*t)² instead of only squaring time (t²).',
+        },
+        {
+          id: 'formula-1-3',
+          name: 'Timeless Kinematic Equation',
+          latex: 'v^2 = v_0^2 + 2 a \\Delta x',
+          plainText: 'v^2 = v0^2 + 2 * a * Δx',
+          description: 'Directly relates velocities, acceleration, and displacement without needing time t.',
+          variables: [
+            { symbol: 'v', meaning: 'Final Velocity', unit: 'm/s' },
+            { symbol: 'v_0', meaning: 'Initial Velocity', unit: 'm/s' },
+            { symbol: 'a', meaning: 'Acceleration', unit: 'm/s²' },
+            { symbol: 'Δx', meaning: 'Displacement', unit: 'm' },
+          ],
+          whenToUse: 'Essential when elapsed time t is unknown and not asked for in the problem.',
+          workedExample: {
+            problem: 'A train traveling at 20 m/s brakes with acceleration -2.0 m/s². What distance does it take to come to a complete stop?',
+            given: 'v_0 = 20 m/s, v = 0 m/s, a = -2.0 m/s²',
+            solutionSteps: [
+              'Rearrange for Δx: Δx = (v² - v_0²) / (2*a)',
+              'Substitute: Δx = (0 - 400) / (2 * -2.0)',
+              'Δx = -400 / -4.0 = 100 m',
+            ],
+            finalAnswer: 'Stopping distance Δx = 100 meters',
+          },
+          commonPitfalls: 'Forgetting to take the square root of v² when solving for final velocity.',
+        },
+      ],
+    },
+    {
+      categoryName: "Newton's Laws & Dynamics",
+      description: 'Fundamental principles governing force interactions, mass inertia, and kinetic friction.',
+      formulas: [
+        {
+          id: 'formula-2-1',
+          name: "Newton's Second Law of Motion",
+          latex: '\\sum \\vec{F} = m \\vec{a}',
+          plainText: 'ΣF = m * a',
+          description: 'The net external vector force acting upon an object equals its mass multiplied by its acceleration vector.',
+          variables: [
+            { symbol: 'ΣF', meaning: 'Net Force Vector', unit: 'Newtons (N = kg·m/s²)' },
+            { symbol: 'm', meaning: 'Inertial Mass', unit: 'kg (kilograms)' },
+            { symbol: 'a', meaning: 'Acceleration Vector', unit: 'm/s²' },
+          ],
+          whenToUse: 'Primary starting point for all Free-Body Diagram (FBD) problems and net force balance analysis.',
+          workedExample: {
+            problem: 'A 1200 kg vehicle is pushed by an engine force of 3800 N while facing 800 N of air resistance. What is its acceleration?',
+            given: 'm = 1200 kg, F_engine = 3800 N, F_drag = 800 N',
+            solutionSteps: [
+              'Calculate Net Force: ΣF = 3800 N - 800 N = 3000 N',
+              'Apply a = ΣF / m',
+              'a = 3000 N / 1200 kg = 2.5 m/s²',
+            ],
+            finalAnswer: 'Acceleration a = 2.5 m/s²',
+          },
+          commonPitfalls: 'Plugging in a single individual force instead of summing all vector components along the active axis.',
+        },
+        {
+          id: 'formula-2-2',
+          name: 'Friction Force (Static & Kinetic)',
+          latex: 'f_k = \\mu_k F_N, \\quad f_s \\le \\mu_s F_N',
+          plainText: 'fk = μk * FN (Kinetic), fs <= μs * FN (Static Max)',
+          description: 'Calculates the resistive contact force parallel to the surface where μ is the coefficient of friction and FN is normal force.',
+          variables: [
+            { symbol: 'f_k / f_s', meaning: 'Frictional Force', unit: 'Newtons (N)' },
+            { symbol: 'μ', meaning: 'Coefficient of Friction', unit: 'Dimensionless ratio' },
+            { symbol: 'F_N', meaning: 'Normal Force perpendicular to surface', unit: 'Newtons (N)' },
+          ],
+          whenToUse: 'Whenever objects slide, push, or rest on rough surfaces or inclined planes.',
+          workedExample: {
+            problem: 'A 15 kg crate sits on a flat floor with kinetic friction coefficient μ_k = 0.35. Find the friction force when sliding.',
+            given: 'm = 15 kg, g = 9.8 m/s², μ_k = 0.35',
+            solutionSteps: [
+              'On flat surface, Normal Force F_N = m*g = 15 * 9.8 = 147 N',
+              'Apply f_k = μ_k * F_N',
+              'f_k = 0.35 * 147 N = 51.45 N',
+            ],
+            finalAnswer: 'Kinetic Friction f_k = 51.5 N',
+          },
+          commonPitfalls: 'Assuming F_N is always equal to m*g (on an incline with angle θ, F_N = m*g*cos(θ)).',
+        },
+        {
+          id: 'formula-2-3',
+          name: 'Universal Gravitational Force',
+          latex: 'F_g = G \\frac{m_1 m_2}{r^2}',
+          plainText: 'Fg = G * (m1 * m2) / r^2',
+          description: 'The mutual gravitational attraction between two point masses separated by distance r.',
+          variables: [
+            { symbol: 'F_g', meaning: 'Gravitational Attraction Force', unit: 'Newtons (N)' },
+            { symbol: 'G', meaning: 'Universal Gravitational Constant', unit: '6.674 × 10⁻¹¹ N·m²/kg²' },
+            { symbol: 'm_1, m_2', meaning: 'Masses of objects 1 and 2', unit: 'kg' },
+            { symbol: 'r', meaning: 'Center-to-center separation distance', unit: 'm (meters)' },
+          ],
+          whenToUse: 'Orbital mechanics, satellite altitudes, planetary gravity calculations.',
+          workedExample: {
+            problem: 'What is the gravitational pull between two 80 kg astronauts spaced 2.0 meters apart in space?',
+            given: 'm_1 = 80 kg, m_2 = 80 kg, r = 2.0 m, G = 6.674e-11',
+            solutionSteps: [
+              'F_g = (6.674 × 10⁻¹¹) * (80 * 80) / (2.0)²',
+              'F_g = (6.674 × 10⁻¹¹) * (6400) / 4.0',
+              'F_g = 1.07 × 10⁻⁷ N',
+            ],
+            finalAnswer: 'F_g = 1.07 × 10⁻⁷ N (negligibly small)',
+          },
+          commonPitfalls: 'Using surface-to-surface distance instead of center-of-mass to center-of-mass distance (radius of planet + altitude).',
+        },
+      ],
+    },
+  ],
+  constantsAndUnits: [
+    { name: 'Standard Acceleration due to Gravity', symbol: 'g', value: '9.80665 m/s² (≈ 9.81 m/s²)', unit: 'm/s²' },
+    { name: 'Universal Gravitational Constant', symbol: 'G', value: '6.67430 × 10⁻¹¹', unit: 'N·m²/kg²' },
+    { name: 'Speed of Light in Vacuum', symbol: 'c', value: '2.99792 × 10⁸', unit: 'm/s' },
+    { name: 'Standard Atmospheric Pressure', symbol: '1 atm', value: '101,325', unit: 'Pa (N/m²)' },
+  ],
+  quickCalculationTips: [
+    'Always set up a consistent coordinate coordinate system (+y up, +x right) before writing down vector components.',
+    'Perform dimensional analysis: if your final units don’t match the physical quantity (e.g., getting m/s instead of m/s²), check your algebra.',
+    'On inclined planes at angle θ, parallel force component is mg·sin(θ) and perpendicular normal component is mg·cos(θ).',
+    'Freefall symmetry: for a projectile launched upward and returning to the same height, time up equals time down, and final speed equals initial speed.',
+  ],
+  generatedAt: new Date().toISOString(),
+};
+
+// PREVIEW & SAMPLE DATA FOR STUDY MATERIAL UPLOADER & QUESTION SOLVER
+export const SAMPLE_STUDY_MATERIALS = [
+  {
+    id: 'sample-physics-exam',
+    title: 'Physics Midterm: Kinematics & Inclined Planes',
+    subject: 'Physics',
+    format: 'PDF',
+    description: 'Exam sheet containing projectile motion calculations, friction forces on an inclined ramp, and diagram-based analysis.',
+    fileName: 'Physics_Midterm_Exam_2025.pdf',
+    fileSize: '1.2 MB',
+  },
+  {
+    id: 'sample-cs-algorithms',
+    title: 'CS 106: Binary Search Trees & Big-O Assignment',
+    subject: 'Computer Science',
+    format: 'Image',
+    description: 'Homework assignment with recursive tree traversal, lowest common ancestor code implementation, and time complexity analysis.',
+    fileName: 'CS_Algorithms_HW3.png',
+    fileSize: '840 KB',
+  },
+  {
+    id: 'sample-chem-kinetics',
+    title: 'Chemistry: Reaction Kinetics & Gas Laws Quiz',
+    subject: 'Chemistry',
+    format: 'PDF',
+    description: 'Quiz covering reaction rates, Arrhenius activation energy calculations, and Le Chatelier equilibrium shifts.',
+    fileName: 'Chemistry_Quiz_Kinetics.pdf',
+    fileSize: '650 KB',
+  },
+];
+
+export const PREVIEW_MATERIAL_ANALYSIS: MaterialAnalysisResult = {
+  id: 'mat-sample-001',
+  materialSummary: 'Midterm Examination Paper covering 2D Kinematics, Inclined Plane Dynamics, and Algorithmic Problem Solving with 3 comprehensive questions and vector diagrams.',
+  subjectDomain: 'Physics & Computational Engineering',
+  keyTopicsCovered: [
+    '2D Projectile Motion & Vector Components',
+    'Inclined Plane Dynamics with Kinetic Friction',
+    'Binary Search Tree Traversal & Lowest Common Ancestor',
+  ],
+  questions: [
+    {
+      id: 'q-mat-1',
+      questionNumber: '1',
+      questionText: 'A ball is launched from ground level with an initial velocity of v₀ = 25 m/s at an angle of θ = 35° above the horizontal. Assuming air resistance is negligible and g = 9.81 m/s², calculate: (a) The total time of flight before returning to ground level, and (b) The maximum vertical height H reached by the projectile.',
+      questionType: 'math',
+      diagramReference: 'Refer to Figure 1 showing the parabolic trajectory from origin (0,0) to landing point (R, 0) with initial velocity vector at 35°.',
+      finalAnswer: '(a) Time of flight t_flight = 2.92 s; (b) Maximum height H = 10.49 m',
+      stepByStepSolution: [
+        'Step 1: Resolve the initial velocity v₀ = 25 m/s into horizontal and vertical vector components:\n• v_0x = v₀ · cos(35°) = 25 · 0.8192 = 20.48 m/s\n• v_0y = v₀ · sin(35°) = 25 · 0.5736 = 14.34 m/s',
+        'Step 2: Calculate the time to reach peak apex where vertical velocity v_y = 0:\n• v_y = v_0y - g · t_peak\n• 0 = 14.34 - 9.81 · t_peak\n• t_peak = 14.34 / 9.81 = 1.462 s',
+        'Step 3: Calculate the total time of flight. Due to symmetrical trajectory over flat ground:\n• t_flight = 2 · t_peak = 2 · 1.462 s = 2.92 s',
+        'Step 4: Calculate the maximum vertical height H using the kinematic relation v_y² = v_0y² - 2gH:\n• 0 = (14.34)² - 2 · (9.81) · H\n• 205.64 = 19.62 · H\n• H = 205.64 / 19.62 = 10.48 m',
+      ],
+      conceptExplanation: 'Projectile motion decomposes 2D motion into two independent 1D motions: constant horizontal velocity (zero acceleration) and constant downward vertical acceleration due to gravity (-g).',
+      formulasUsed: [
+        'v_0y = v₀ · sin(θ)',
+        'v_0x = v₀ · cos(θ)',
+        't_flight = (2 · v_0y) / g',
+        'H_max = (v_0y)² / (2 · g)',
+      ],
+      commonMistakes: [
+        'Using the full velocity v₀ (25 m/s) instead of the vertical component v_0y (14.34 m/s) when computing vertical height.',
+        'Calculator angle mode set to Radians instead of Degrees when evaluating sin(35°).',
+      ],
+      mathBreakdown: {
+        formula: 'H = v_0y² / (2g) where v_0y = v₀ · sin(θ)',
+        substitution: 'H = (25 · sin(35°))² / (2 · 9.81) = (14.34 m/s)² / (19.62 m/s²)',
+        calculation: 'H = 205.64 / 19.62 = 10.481 m',
+        finalResult: 'Maximum Height H = 10.49 m',
+      },
+      hint: 'Remember that at the projectile’s highest point, the vertical component of velocity is momentarily zero, but horizontal velocity remains constant.',
+      simplifiedExplanation: 'Think of throwing a baseball: gravity only pulls it downward, not sideways. Once you find how fast it is moving straight up, you can easily find how long it takes gravity to bring it to a stop and pull it back down.',
+      similarQuestion: {
+        question: 'A projectile is launched with v₀ = 20 m/s at 45°. What is its total time of flight (g = 9.8 m/s²)?',
+        answer: 't_flight ≈ 2.89 s',
+        explanation: 'v_0y = 20 · sin(45°) = 14.14 m/s. Total time = 2 · 14.14 / 9.8 = 2.886 s.',
+      },
+      assumptions: 'Air resistance is neglected, and the ground is assumed perfectly flat and horizontal.',
+    },
+    {
+      id: 'q-mat-2',
+      questionNumber: '2',
+      questionText: 'Given the root of a Binary Search Tree (BST) and two nodes p and q, write an algorithm to find the Lowest Common Ancestor (LCA) node of the two given nodes. Explain the time and space complexity.',
+      questionType: 'programming',
+      diagramReference: 'Refer to the BST diagram in Question 2 showing root node 6 with left child 2 and right child 8.',
+      finalAnswer: 'Traverse down the tree: if both p and q are less than current node, go left; if both are greater, go right; otherwise, the current node is the LCA. Time Complexity: O(h), Space Complexity: O(1) iterative.',
+      stepByStepSolution: [
+        'Step 1: Exploit the fundamental Binary Search Tree invariant: for every node, all values in its left subtree are strictly smaller, and all values in its right subtree are strictly larger.',
+        'Step 2: Start traversal at the root node.',
+        'Step 3: If both target values (p.val and q.val) are strictly smaller than root.val, both nodes must reside in the left subtree; continue search on root.left.',
+        'Step 4: If both target values are strictly greater than root.val, both nodes must reside in the right subtree; continue search on root.right.',
+        'Step 5: If the values split (one is smaller, one is greater, or current node equals p or q), the current node is the split point and therefore the Lowest Common Ancestor.',
+      ],
+      conceptExplanation: 'Because a BST is pre-ordered, the Lowest Common Ancestor is precisely the first node encountered from the top where the search paths for p and q diverge in opposite directions.',
+      formulasUsed: [
+        'BST Property: Left.val < Root.val < Right.val',
+        'Time Complexity: O(h) where h is tree height (O(log n) balanced, O(n) skewed)',
+      ],
+      commonMistakes: [
+        'Treating the tree as a generic binary tree and using expensive backtracking instead of utilizing the BST ordering property.',
+        'Not handling the case where one node is an ancestor of the other (e.g. p is an ancestor of q).',
+      ],
+      codeBreakdown: {
+        approach: 'Iterative walk leveraging BST ordering property without recursion stack overhead.',
+        language: 'Python',
+        code: `class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def lowestCommonAncestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+    curr = root
+    while curr:
+        if p.val < curr.val and q.val < curr.val:
+            curr = curr.left
+        elif p.val > curr.val and q.val > curr.val:
+            curr = curr.right
+        else:
+            # Split point found
+            return curr
+    return None`,
+        explanation: 'We compare node values at each step. Because we do not use recursion, auxiliary space complexity is strictly O(1).',
+        expectedOutput: 'Input: root = [6,2,8,0,4,7,9], p = 2, q = 8 -> Output: Node with val 6',
+      },
+      hint: 'Notice that in a BST, you do not need to look at both left and right branches at the same time. The values tell you exactly which way to branch.',
+      simplifiedExplanation: 'Imagine you and a friend are walking down a fork in the road. As long as you both need to turn left, you walk together. As soon as one must turn left and the other right, your last shared crossroads is your common ancestor!',
+      similarQuestion: {
+        question: 'What is the LCA of nodes 2 and 4 in the BST where root is 6, root.left is 2, and 2.right is 4?',
+        answer: 'Node 2',
+        explanation: 'Node 2 is the parent of node 4, so node 2 is the lowest common ancestor of 2 and 4.',
+      },
+      assumptions: 'All Node.val are unique. Both p and q exist in the given BST.',
+    },
+    {
+      id: 'q-mat-3',
+      questionNumber: '3',
+      questionText: 'A 15 kg crate rests on a rough ramp inclined at an angle of 25° above the horizontal. The coefficient of static friction is μ_s = 0.45 and kinetic friction is μ_k = 0.35. (a) Will the crate remain stationary or begin to slide down the ramp? (b) If it slides, calculate the net acceleration down the incline.',
+      questionType: 'math',
+      diagramReference: 'Refer to free-body diagram on ramp: Weight mg pointing vertically downward, Normal Force F_N perpendicular to ramp surface, and Friction force f opposing downhill motion.',
+      finalAnswer: '(a) The crate will slide down because tan(25°) = 0.466 > μ_s (0.45); (b) Acceleration a = 0.98 m/s² down the ramp.',
+      stepByStepSolution: [
+        'Step 1: Resolve gravitational weight into perpendicular and parallel components:\n• F_parallel (downhill) = m · g · sin(25°) = 15 · 9.81 · 0.4226 = 62.19 N\n• F_perp = m · g · cos(25°) = 15 · 9.81 · 0.9063 = 133.36 N',
+        'Step 2: Determine normal force F_N from equilibrium perpendicular to the surface:\n• F_N = F_perp = 133.36 N',
+        'Step 3: Calculate maximum static friction force before motion begins:\n• f_s(max) = μ_s · F_N = 0.45 · 133.36 N = 60.01 N',
+        'Step 4: Compare downhill gravity component with maximum static friction:\n• F_parallel (62.19 N) > f_s(max) (60.01 N)\n• Since the downhill pulling force exceeds maximum static grip, the crate DOES slide.',
+        'Step 5: Since the crate is in motion, kinetic friction acts up the ramp:\n• f_k = μ_k · F_N = 0.35 · 133.36 N = 46.68 N\n• Net force F_net = F_parallel - f_k = 62.19 - 46.68 = 15.51 N down the ramp\n• Acceleration a = F_net / m = 15.51 N / 15 kg = 1.03 m/s² (≈ 0.98–1.03 m/s² depending on g precision).',
+      ],
+      conceptExplanation: 'On an incline, an object slips whenever tan(θ) > μ_s, regardless of mass. Once slipping commences, the resisting force drops from static friction to kinetic friction.',
+      formulasUsed: [
+        'F_parallel = m · g · sin(θ)',
+        'F_N = m · g · cos(θ)',
+        'f_s(max) = μ_s · F_N',
+        'f_k = μ_k · F_N',
+        'a = g · (sin(θ) - μ_k · cos(θ))',
+      ],
+      commonMistakes: [
+        'Continuing to use the static friction coefficient μ_s after establishing that the object is sliding.',
+        'Setting normal force F_N = mg instead of mg · cos(θ).',
+      ],
+      mathBreakdown: {
+        formula: 'a = g · (sin(θ) - μ_k · cos(θ))',
+        substitution: 'a = 9.81 · (sin(25°) - 0.35 · cos(25°)) = 9.81 · (0.4226 - 0.35 · 0.9063)',
+        calculation: 'a = 9.81 · (0.4226 - 0.3172) = 9.81 · 0.1054 = 1.034 m/s²',
+        finalResult: 'Net downhill acceleration = 1.03 m/s²',
+      },
+      hint: 'A quick trick for incline sliding: compare tan(θ) directly with μ_s. If tan(θ) is greater, it always slides!',
+      simplifiedExplanation: 'Imagine putting a book on a tilted desk. As you tilt it higher, gravity pulls it downhill harder. Once the tilt is steeper than the grip of the desk, it slips and speeds up as it slides down.',
+      similarQuestion: {
+        question: 'At what ramp angle θ will a block with μ_s = 0.50 just start to slip?',
+        answer: 'θ = arctan(0.50) ≈ 26.6°',
+        explanation: 'Slipping occurs when tan(θ) = μ_s, so θ = arctan(0.50) = 26.57°.',
+      },
+      assumptions: 'The ramp angle and friction coefficients are uniform along the entire surface.',
+    },
+  ],
+  generatedAt: new Date().toISOString(),
+};
+

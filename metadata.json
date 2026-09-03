@@ -1,0 +1,6 @@
+{
+  "name": "AI Study Explainer",
+  "description": "An interactive AI study tool for students featuring study material photo & PDF question solving, structured concept explanations, visual mind maps, and high-yield formula cheat sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
