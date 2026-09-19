@@ -10,7 +10,7 @@ View your app in AI Studio: https://ai.studio/apps/6ed101ff-3a30-44c8-ae81-c37d3
 **Prerequisites:**  Node.js
 
 
-1. Install dependencies:
+
 
 
 
